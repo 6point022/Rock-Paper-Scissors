@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<script>
+			function computerPlay() {
+				// var num = Math.random(1, 4);
+				var num = Math.floor(Math.random() * (4 - 1)) + 1
+				console.log(num);
+				
+
+				switch(num) {
+					case 1: 
+							return "Rock";
+							break;
+					case 2: 
+							return "Paper";
+							break;
+					default:
+							return "Scissors";
+				}
+			}
+
+			function playRound(playerSelection, computerSelection) {
+				// console.log(playerSelection, computerSelection);
+				var result;
+				if (playerSelection == computerSelection) {
+					result = "Tie!"
+				}
+
+				if (playerSelection == "Rock") {
+					if (computerSelection == "Scissors")
+						result = "You win! Rock beats Scissors.";
+
+					if (computerSelection == "Paper")
+						result = "You lose! Paper beats Rock.";
+				}
+
+				if	(playerSelection == "Scissors") {
+					if (computerSelection == "Rock")
+						result = "You lose!";
+					if (computerSelection == "Paper")
+						result = "You win!";
+				}
+
+				if (playerSelection == "Paper") {
+					if (computerSelection == "Rock")
+						result = "You win!";
+
+					if (computerSelection == "Scissors")
+						result = "You lose!";
+				}
+
+				return result;
+			}
+		
+			function game() {
+				var playerScore = 0, computerScore = 0;
+
+				for (let i = 0; i < 3; i++) {
+					var result = playRound(prompt("Player selection"), computerPlay());
+					console.log(result)
+					if (result.includes("win"))
+						playerScore++;
+					else if (result.includes("lose"))
+						computerScore++;
+				}
+
+				// console.log(playerScore, computerScore);
+				
+
+				if (playerScore > computerScore)
+					console.log("You win the game!");
+
+				else if (playerScore < computerScore)
+					console.log("You lose the game!");
+
+				else
+					console.log("It is a tie!");
+			}
+
+			game();
+
+		</script>
+	</body>
+</html>
